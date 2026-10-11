@@ -37,7 +37,7 @@ palette <- leaflet::colorNumeric("YlGnBu", domain = data$Incidence_per_100k)
 labels <- sprintf("%s | Female incidence: %.1f per 100,000 | Uninsured adults 19–64: %.1f%%",
                   geometry$State, geometry$Incidence_per_100k, geometry$Uninsured_percent)
 map <- leaflet::leaflet(geometry) |>
-  leaflet::addProviderTiles("CartoDB.Positron") |>
+  leaflet::addTiles() |>
   leaflet::addPolygons(fillColor = ~palette(Incidence_per_100k), fillOpacity = 0.8,
                        color = "white", weight = 1, label = labels) |>
   leaflet::addLegend(pal = palette, values = data$Incidence_per_100k,
