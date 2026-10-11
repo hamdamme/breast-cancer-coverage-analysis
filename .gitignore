@@ -4,3 +4,13 @@
 .Ruserdata
 .Rproj.user/
 .env
+/output/
+/plots/
+/*.pptx
+/data_r_code/index.html
+/data_r_code/final_filtered_data.csv
+/data_r_code/breast_cancer_us.R
+/data_r_code/bachelor_data.csv
+/data_r_code/high_school_data.csv
+/data_r_code/median_income_data.csv
+/data_r_code/cb_2018_us_state_500k.*

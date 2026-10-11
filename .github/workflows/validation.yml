@@ -1,0 +1,19 @@
+name: Validate analysis inputs
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: r-lib/actions/setup-r@f9a764fea8d5c63df6ef9a5c7795bf7deb5d7e05 # v2
+        with:
+          r-version: '4.4.3'
+          use-public-rspm: true
+      - name: Install workbook reader
+        run: Rscript -e 'install.packages("readxl")'
+      - name: Check script syntax and input validation
+        run: |
+          Rscript -e 'for (f in list.files(c("R", "scripts", "tests"), pattern="[.]R$", full.names=TRUE)) parse(f)'
+          Rscript tests/test_data.R

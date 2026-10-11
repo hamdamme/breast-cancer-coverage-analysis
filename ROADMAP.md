@@ -1,10 +1,11 @@
 # Roadmap
 
-Scope and current status are described in [README.md](README.md).
+Scope: [README.md](README.md). Data definitions and provenance: [DATA_SOURCES.md](DATA_SOURCES.md).
 
 | Phase | Scope | Estimated effort | Status |
 | --- | --- | --- | --- |
-| Naming | Rename repository, project folder, and README | Small | Complete |
-| Source review | Review R code, data provenance, generated files, and document metadata | To be scoped | Pending |
-| Reproducibility | Document requirements and verify analysis execution | To be scoped | Pending |
-| Publication | Publish reviewed implementation and update portfolio | To be scoped | Pending |
+| Naming | Repository and 2022 study title | Small | Complete |
+| Source review | Verify core data; exclude unsupported education and income measures | Small | Complete |
+| Reproducibility | Portable pipeline, validation checks, charts, and interactive map | Medium | Complete; full local run and input tests passed |
+| Publication | Publish reviewed source and update portfolio | Small | In progress |
+| Extensions | Confirm socioeconomic data provenance and define valid comparisons | To be scoped | Planned |
