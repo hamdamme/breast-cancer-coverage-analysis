@@ -23,6 +23,10 @@ python3 -m http.server 8000 --directory output
 
 Open http://localhost:8000 to view the report and interactive map. Map tiles require internet access. No Pandoc installation is required.
 
+## Report hosting
+
+GitHub Actions generates the report from the included inputs and publishes `output/` as a GitHub Pages artifact. Generated files remain outside version control. Changes to analysis scripts, data, or the publishing workflow rebuild the report.
+
 ## Architecture
 
 - `R/prepare_data.R` selects the verified 2022 populations, checks the insurance workbook layout, joins by state, and validates completeness, duplicates, numeric ranges, and coverage totals.
