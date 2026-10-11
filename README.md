@@ -25,6 +25,8 @@ Open http://localhost:8000 to view the report and interactive map. Map tiles req
 
 ## Report hosting
 
+[Open the live report](https://coverage.hamdam.me/).
+
 GitHub Actions generates the report from the included inputs and publishes `output/` as a GitHub Pages artifact. Generated files remain outside version control. Changes to analysis scripts, data, or the publishing workflow rebuild the report.
 
 ## Architecture
@@ -41,7 +43,7 @@ The inputs are preserved in their supplied formats to keep the original values i
 
 See [DATA_SOURCES.md](DATA_SOURCES.md) for sources, definitions, and provenance limits. The analysis uses one year, state averages, and an unweighted descriptive correlation. It does not adjust for screening, age distributions beyond the supplied incidence adjustment, socioeconomic factors, or survey uncertainty. The table does not contain cancer rates stratified by insurance status.
 
-GitHub Actions checks script syntax and input validation. The complete chart and map pipeline is verified locally; CI does not render the report.
+The validation workflow checks script syntax and input validation. The publishing workflow runs the input tests and full chart and map pipeline before deploying the report.
 
 ## Attribution and status
 
