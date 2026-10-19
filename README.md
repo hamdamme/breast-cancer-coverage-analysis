@@ -8,6 +8,10 @@ Cancer incidence is the age-adjusted female rate per 100,000. Insurance coverage
 
 The map shows the contiguous states and District of Columbia. The charts and CSV retain Alaska, Hawaii, and District of Columbia. Education and income extensions are excluded until their provenance and variable definitions are verified.
 
+## Outcome and recognition
+
+The original study was developed at Northeastern Illinois University’s Center of Health 2025 Summer Data Camp by Lavinia Nedelcu, Hamdam Aynazarov, and Naima Kazi. The team presented its findings at the 2025 Summer Data Camp Jamboree and Research Competition and earned second place. This repository is the reproducible public version of that team study: the inputs were re-verified, validation tests were added, and the scope statements were corrected for the published analysis. Participation and second place are documented in a letter from Christina Ciecierski, Professor of Economics and Director of the Center of Health, dated October 10, 2026.
+
 ## Requirements and setup
 
 Use R 4.1 or later. Dependencies: readxl, ggplot2, sf, maps, leaflet, and htmlwidgets. The sf package may require GDAL, GEOS, PROJ, and udunits development libraries on Linux; see the [sf installation guide](https://r-spatial.github.io/sf/#installing).

@@ -48,17 +48,40 @@ correlation <- cor(data$Incidence_per_100k, data$Uninsured_percent)
 writeLines(sprintf("2022 aggregate state analysis\nJurisdictions: %d\nPearson correlation: %.4f\nUnweighted descriptive association; not causal and not an individual risk estimate.",
                    nrow(data), correlation), file.path(output, "summary.txt"))
 writeLines(capture.output(sessionInfo()), file.path(output, "session-info.txt"))
-writeLines(c('<!doctype html><html lang="en"><meta charset="utf-8">',
- '<meta name="viewport" content="width=device-width, initial-scale=1">',
- '<title>Breast Cancer &amp; Insurance Coverage Analysis (2022)</title>',
- '<style>body{max-width:1100px;margin:40px auto;padding:0 24px;font:17px/1.6 system-ui;color:#243d36;background:#f7f5ef}iframe{width:100%;height:540px;border:1px solid #ccd7ce}img{max-width:100%;height:auto}a{color:#376757}</style>',
- '<p><a href="https://www.hamdam.me/#projects">← Back to portfolio</a></p>',
- '<h1>Breast Cancer &amp; Insurance Coverage Analysis (2022)</h1>',
- '<p>Female breast cancer incidence compared with insurance coverage for all adults aged 19–64. These are different populations. State averages do not establish individual risk or causation.</p>',
- '<h2>Interactive state map</h2><p>The map covers the contiguous states and District of Columbia. Alaska and Hawaii are included in the downloadable table.</p>',
- '<iframe title="State incidence and adult insurance coverage" src="map.html"></iframe>',
- '<h2>Coverage and incidence</h2><img src="coverage_scatter.png" alt="Scatter plot comparing state female incidence with adult uninsured percentage">',
- '<h2>Incidence by state</h2><img src="state_incidence.png" alt="Bar chart of incidence across 50 states and District of Columbia">',
- '<p><a href="state_metrics.csv">Download state metrics</a> · <a href="summary.txt">Descriptive summary</a></p>',
- '<p>Original study: Lavinia Nedelcu, Hamdam Aynazarov, and Naima Kazi. See repository documentation for data sources and methodology.</p></html>'), file.path(output, "index.html"))
+html <- sprintf('<!doctype html><html lang="en"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Breast Cancer &amp; Insurance Coverage Analysis (2022)</title>
+<style>
+body{max-width:1100px;margin:40px auto;padding:0 24px;font:17px/1.6 system-ui;color:#243d36;background:#f7f5ef}
+iframe{width:100%%;height:540px;border:1px solid #ccd7ce}
+img{max-width:100%%;height:auto}
+a{color:#376757}
+.print-map-note{display:none}
+@media print{
+ body{background:#fff;margin:0;max-width:none;font-size:11pt}
+ a{color:#243d36;text-decoration:none}
+ .screen-only{display:none}
+ .print-map-note{display:block}
+ iframe{display:none}
+ h1,h2{page-break-after:avoid}
+ img{page-break-inside:avoid}
+}
+</style>
+<p class="screen-only"><a href="https://www.hamdam.me/#projects">← Back to portfolio</a></p>
+<h1>Breast Cancer &amp; Insurance Coverage Analysis (2022)</h1>
+<p>Female breast cancer incidence compared with insurance coverage for all adults aged 19–64. These are different populations. State averages do not establish individual risk or causation.</p>
+<h2>Interactive state map</h2>
+<p>The map covers the contiguous states and District of Columbia. Alaska and Hawaii are included in the downloadable table.</p>
+<p class="print-map-note">The interactive map does not render in print; it is available live at https://coverage.hamdam.me/.</p>
+<iframe title="State incidence and adult insurance coverage" src="map.html"></iframe>
+<h2>Method</h2>
+<p>This report aggregates two public 2022 sources for all 50 states and District of Columbia: female breast cancer incidence (CDC U.S. Cancer Statistics, age-adjusted rate per 100,000) and insurance coverage for adults aged 19–64 (U.S. Census Bureau ACS table HI05). Records are joined by state. The analysis is an unweighted descriptive comparison; it is not adjusted for screening, age mix, socioeconomic factors, or survey uncertainty.</p>
+<h2>Results summary</h2>
+<p>Pearson correlation between female incidence and uninsured percentage across %d jurisdictions: <strong>%.4f</strong>. See the <a href="summary.txt">descriptive summary</a> and the <a href="state_metrics.csv">state metrics table</a>.</p>
+<h2>Coverage and incidence</h2><img src="coverage_scatter.png" alt="Scatter plot comparing state female incidence with adult uninsured percentage">
+<h2>Incidence by state</h2><img src="state_incidence.png" alt="Bar chart of incidence across 50 states and District of Columbia">
+<p class="screen-only"><a href="state_metrics.csv">Download state metrics</a> · <a href="summary.txt">Descriptive summary</a></p>
+<p>Original study: Lavinia Nedelcu, Hamdam Aynazarov, and Naima Kazi. The study earned second place at the 2025 Summer Data Camp Jamboree and Research Competition at Northeastern Illinois University. See the repository documentation for data sources and methodology.</p></html>',
+  nrow(data), correlation)
+writeLines(html, file.path(output, "index.html"))
 cat("Analysis complete:", nrow(data), "jurisdictions; outputs written to output/\n")
