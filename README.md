@@ -53,4 +53,4 @@ The validation workflow checks script syntax and input validation. The publishin
 
 Original study contributors: Lavinia Nedelcu, Hamdam Aynazarov, and Naima Kazi. This repository preserves that attribution. The original presentation and exploratory files remain local; they are not published as verified findings.
 
-See [ROADMAP.md](ROADMAP.md) for verified progress and planned work.
+Status: the 2022 analysis is complete and verified, with validated inputs, passing tests, and a published live report. Extensions to education and income measures are planned pending verification of those sources.
