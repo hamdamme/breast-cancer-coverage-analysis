@@ -49,8 +49,6 @@ See [DATA_SOURCES.md](DATA_SOURCES.md) for sources, definitions, and provenance 
 
 The validation workflow checks script syntax and input validation. The publishing workflow runs the input tests and full chart and map pipeline before deploying the report.
 
-## Attribution and status
+## Attribution
 
 Original study contributors: Lavinia Nedelcu, Hamdam Aynazarov, and Naima Kazi. This repository preserves that attribution. The original presentation and exploratory files remain local; they are not published as verified findings.
-
-Status: the 2022 analysis is complete and verified, with validated inputs, passing tests, and a published live report. Extensions to education and income measures are planned pending verification of those sources.
