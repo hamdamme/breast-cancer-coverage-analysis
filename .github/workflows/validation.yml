@@ -5,15 +5,30 @@ permissions:
 jobs:
   validate:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       - uses: r-lib/actions/setup-r@f9a764fea8d5c63df6ef9a5c7795bf7deb5d7e05 # v2
         with:
           r-version: '4.4.3'
           use-public-rspm: true
-      - name: Install workbook reader
-        run: Rscript -e 'install.packages("readxl")'
+      - uses: r-lib/actions/setup-r-dependencies@f9a764fea8d5c63df6ef9a5c7795bf7deb5d7e05
+        with:
+          packages: |
+            any::readxl
+            any::ggplot2
+            any::sf
+            any::maps
+            any::leaflet
+            any::htmlwidgets
+          install-pandoc: false
+          install-quarto: false
+      - name: Verify archived input checksums
+        run: sha256sum --check data_r_code/SHA256SUMS
       - name: Check script syntax and input validation
         run: |
           Rscript -e 'for (f in list.files(c("R", "scripts", "tests"), pattern="[.]R$", full.names=TRUE)) parse(f)'
           Rscript tests/test_data.R
+          Rscript scripts/run_analysis.R
+          Rscript -e 'files <- file.path("output", c("index.html", "map.html", "coverage_scatter.png", "state_incidence.png", "state_metrics.csv", "summary.txt", "session-info.txt")); stopifnot(all(file.exists(files)), all(file.info(files)$size > 0))'
+

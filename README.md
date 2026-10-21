@@ -47,8 +47,9 @@ The inputs are preserved in their supplied formats to keep the original values i
 
 See [DATA_SOURCES.md](DATA_SOURCES.md) for sources, definitions, and provenance limits. The analysis uses one year, state averages, and an unweighted descriptive correlation. It does not adjust for screening, age distributions beyond the supplied incidence adjustment, socioeconomic factors, or survey uncertainty. The table does not contain cancer rates stratified by insurance status.
 
-The validation workflow checks script syntax and input validation. The publishing workflow runs the input tests and full chart and map pipeline before deploying the report.
+Pull request validation verifies input checksums, checks script syntax, runs input tests, and builds the complete report, charts, and map. It also checks that the expected output files exist and contain data. Publication verifies the same input checksums before building and deploying the report.
 
 ## Attribution
 
 Original study contributors: Lavinia Nedelcu, Hamdam Aynazarov, and Naima Kazi. This repository preserves that attribution. The original presentation and exploratory files remain local; they are not published as verified findings.
+
