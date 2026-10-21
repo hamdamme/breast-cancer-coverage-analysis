@@ -35,6 +35,8 @@ jobs:
             any::htmlwidgets
           install-pandoc: false
           install-quarto: false
+      - name: Verify archived input checksums
+        run: sha256sum --check data_r_code/SHA256SUMS
       - name: Validate data and generate report
         run: |
           Rscript tests/test_data.R
@@ -55,3 +57,4 @@ jobs:
       - name: Deploy report
         id: deployment
         uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
+

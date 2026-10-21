@@ -15,3 +15,18 @@ These are aggregate public statistics, not patient records. The supplied cancer 
 The local education and income exports are not used in this published analysis. The column originally labeled bachelor’s education (`S1502_C02_014E`) describes science and engineering degree fields for a subgroup, not the overall share with a bachelor’s degree. Averaging it with the high school percentage would not create a valid combined attainment measure. The year and release edition of the income and bachelor’s exports remain unverified.
 
 The supplied 2018 boundary files have no projection file and are not used by the reproducible pipeline. The original presentation’s claim about women aged 19–64 is not supported by the all-person insurance table or the cancer export's available fields.
+
+
+## Snapshot integrity and provenance status
+
+`data_r_code/SHA256SUMS` records SHA256 checksums for the exact inputs stored in
+this repository. Both validation and publication verify these checksums before
+running the analysis. A checksum identifies the archived bytes; it does not
+verify the original publisher or recover the missing export date.
+
+The cancer export remains a supplied study input with an unverified acquisition
+date. Closing that gap requires the original download or a fresh official export
+with documented query filters, release edition, download date, and comparison
+results. Preserve the current snapshot when collecting that evidence; publish a
+new dataset revision if values differ. Do not relabel the current file as a
+verified official download without the matching evidence.
